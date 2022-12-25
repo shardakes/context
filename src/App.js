@@ -1,23 +1,18 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Counter from './component/counter';
+import Form from './component/Form';
+import { HealperContext } from './context';
 
 function App() {
+    const [name,setName]=React.useState("");
+    const [count,setCount]=React.useState(0);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <HealperContext.Provider value={{ count, setCount, name, setName }}>
+      <Form />
+      <Counter />
+      </HealperContext.Provider>
     </div>
   );
 }
